@@ -1,0 +1,10 @@
+.card .img-fluid {
+  height: 250px;
+  object-fit: cover;
+}
+.card {
+  transition: all 0.3s;
+}
+.card:hover {
+  box-shadow: 0 5px 8px rgba(7, 7, 7, 0.3) !important;
+}

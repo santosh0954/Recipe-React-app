@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './card.css';
 
 function Card(props) {
 
   return (
     <div className="card border-warning shadow-sm">
       <div className="card-header bg-warning text-dark">
-        <h5 className="card-title">{props.title}</h5>
+        <h5 className="card-title">{props.name}</h5>
       </div>
       <img
         src={props.imageUrl}
