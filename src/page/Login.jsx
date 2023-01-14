@@ -5,6 +5,7 @@ import { login } from "../services/authService";
 function Login() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
   const [error, setError] = useState({});
 
   const handleChange = (e) => {
@@ -14,6 +15,9 @@ function Login() {
     if (e.target.name === "password") {
       setPassword(e.target.value);
     }
+    if (e.target.name === "remember") {
+      setRemember(!remember);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -22,7 +26,7 @@ function Login() {
       const jwt = await login(userId, password);
       console.log(jwt);
       if (!jwt.data.error) {
-        localStorage.setItem("token", jwt.data);
+        remember ? localStorage.setItem("token", jwt.data) : sessionStorage.setItem('token', jwt.data);
         setUserId("");
         setPassword("");
         window.location = "/";
@@ -77,7 +81,7 @@ function Login() {
           />
         </div>
         <div className="mb-3 form-check">
-          <input type="checkbox" className="form-check-input" id="rememberMe" />
+          <input type="checkbox" className="form-check-input" id="rememberMe" name="remember" checked={remember} onChange={handleChange} />
           <label className="form-check-label" htmlFor="rememberMe">
             Remember me
           </label>

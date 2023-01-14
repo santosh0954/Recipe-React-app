@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 function Protected() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") || sessionStorage.getItem("token");
   // console.log(!token)
 
   if (!token) {

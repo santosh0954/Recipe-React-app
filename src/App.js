@@ -17,8 +17,8 @@ function App() {
   // console.log(data)
   useEffect(() => {
     try {
-      if (localStorage.getItem("token")) {
-        const user = jwt_decode(localStorage.getItem("token"));
+      if (localStorage.getItem("token") || sessionStorage.getItem("token")) {
+        const user = jwt_decode(localStorage.getItem("token") || sessionStorage.getItem("token"));
         // console.log(user)
         setUser(user);
       }

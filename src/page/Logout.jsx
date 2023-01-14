@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 function Logout() {
   const navigation = useNavigate();
   useEffect(() => {
-    localStorage.removeItem("token");
+    localStorage.clear();
+    sessionStorage.clear();
     // window.location = '/logout';
     navigation("/login");
   }, []);
